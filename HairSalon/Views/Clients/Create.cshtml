@@ -7,7 +7,7 @@
 <h2>New Client</h2>
 
 <h3>A stylist must be added before a client can be added</h3>
-<button>@Html.ActionLink("this page", "Create", "Stylists") to create a Stylist</button>
+<h2>@Html.ActionLink("Click Here: Create Stylist", "Create", "Stylists")</h2>
 
 @using (Html.BeginForm())
 {
@@ -15,7 +15,7 @@
   @Html.TextBoxFor(model => model.Description)
 
   @Html.LabelFor(model => model.Stylist)
-  @Html.DropDownList("StylistsId")
+  @Html.DropDownList("StylistId")
 
   <input type="submit" value="Add new client" class="btn btn-default"/>
 }
