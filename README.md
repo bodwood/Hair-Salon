@@ -33,7 +33,7 @@ This application allows the user to track stylists and their clients for a hair 
 ```json
     {
       "ConnectionStrings": {
-          "DefaultConnection": "Server=localhost;Port=3306;database=hair_salon;uid=[YOUR-USER-HERE];pwd=[YOUR-PASSWORD-HERE];"
+          "DefaultConnection": "Server=localhost;Port=3306;database=bodie_wood;uid=[YOUR-USER-HERE];pwd=[YOUR-PASSWORD-HERE];"
       }
   }
 ```
