@@ -32,14 +32,14 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Client client) //take in client
+    public ActionResult Create(Client client)
     {
-      if (client.StylistId == 0) //make sure client list is not 0
+      if (client.StylistId == 0)
       {
         return RedirectToAction("Create");
       }
-      _db.Clients.Add(client);  //add client to Clients DBSet (database)
-      _db.SaveChanges();  //save changes
+      _db.Clients.Add(client);
+      _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
