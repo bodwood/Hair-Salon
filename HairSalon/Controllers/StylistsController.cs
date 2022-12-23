@@ -28,20 +28,20 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Stylist stylist)
+    public ActionResult Create(Stylist stylist) //takes in a stylist and adds stylist to DbSet
     {
       _db.Stylists.Add(stylist);  //adds stylist object to database of table Stylists
       _db.SaveChanges();  //saves database changes
       return RedirectToAction("Index"); //redirects to index after action is performed
     }
 
-    // public ActionResult Details(int id)
-    // {
-    //   Stylist stylistDetails = _db.Stylists
-    //                                 .Include(stylist => stylist.Clients)
-    //                                 .FirstOrDefault(stylist => stylist.StylistId == id);
-    //   return View(stylistDetails);
-    // }
+    public ActionResult Details(int id)
+    {
+      Stylist stylistDetails = _db.Stylists
+                                    .Include(stylist => stylist.Clients)
+                                    .FirstOrDefault(stylist => stylist.StylistId == id);
+      return View(stylistDetails);
+    }
 
   }
 }
