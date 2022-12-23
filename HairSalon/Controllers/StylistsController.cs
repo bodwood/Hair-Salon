@@ -35,26 +35,32 @@ namespace HairSalon.Controllers
       return RedirectToAction("Index"); //redirects to index after action is performed
     }
 
-    public ActionResult Details(int id)
+    public ActionResult Details(int id) //takes in id of the entry we want to view
     {
-      Stylist stylistDetails = _db.Stylists
+      Stylist stylistDetails = _db.Stylists //start by looking at _db.Stylists
                                     .Include(stylist => stylist.Clients)
-                                    .FirstOrDefault(stylist => stylist.StylistId == id);
-      return View(stylistDetails);
+                                    .FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
+      return View(stylistDetails);  //return details of stylist with that id
     }
 
-    public ActionResult Edit(int id)
+    public ActionResult Edit(int id)  //takes in id of the entry we want to view
     {
-      Stylist stylistEdit = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
-      return View(stylistEdit);
+      Stylist stylistEdit = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
+      return View(stylistEdit); //Returns stylistEdit to edit view
     }
 
     [HttpPost]
-    public ActionResult Edit(Stylist stylist)
+    public ActionResult Edit(Stylist stylist) //this method is basically the same as Create method
     {
-      _db.Stylists.Update(stylist);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      _db.Stylists.Update(stylist);  //updates stylist object to database of table Stylists
+      _db.SaveChanges();  //saves database changes
+      return RedirectToAction("Index"); //redirects to index after action is performed
+    }
+
+    public ActionResult Delete(int id)// takes in id of the entry we want to view
+    {
+      Stylists stylistDelete = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
+      return (stylistDelete);//return stylistDelete to Delete View
     }
 
   }
