@@ -34,22 +34,36 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Create(Client client) //take in client
     {
-      if(client.StylistId == 0) //make sure client list is not 0
+      if (client.StylistId == 0) //make sure client list is not 0
       {
         return RedirectToAction("Create");
       }
       _db.Clients.Add(client);  //add client to Clients DBSet (database)
       _db.SaveChanges();  //save changes
-      return RedirectToAction("Index"); 
+      return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      Client clientDetails = _db.Clients 
+      Client clientDetails = _db.Clients
                                 .Include(client => client.Stylist)
                                 .FirstOrDefault(client => client.ClientId == id);
       return View(clientDetails);
     }
 
+    public ActionResult Edit(int id)
+    {
+      Client thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
+      return View(thisClient);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Client client)
+    {
+      _db.Clients.Update(client);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
