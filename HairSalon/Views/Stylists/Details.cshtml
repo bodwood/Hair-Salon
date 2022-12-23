@@ -4,11 +4,23 @@
 
 @model HairSalon.Models.Stylist
 
-<h1>Confirm Delete</h1>
+<h1>Stylist Details</h1>
 
-@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
-@using(Html.BeginForm())
+<h2>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h2>
+@if(@Model.Clients.Count == 0)
 {
-  <input type="submit" value="Delete"/>
+  <h2>No clients have been added for @Html.DisplayFor(model => model.Name)</h2>
 }
-@Html.ActionLink("Back to Stylists", "Index");
+else{
+  <h2>Clients</h2>
+  @* <ul>
+    @foreach (Client client in Model.Clients)
+    {
+      <li>@Html.ActionLink($"{client.Description}", "Details", "Clients", new { id = client.ClientId})</li>
+    }
+  </ul> *@
+}
+
+<button>@Html.ActionLink("Edit @Html.DisplayFor(model => model.Name", "Edit", new { id = Model.StylistId});</button>
+<button>@Html.ActionLink("Delete @Html.DisplayFor(model => model.Name", "Delete", new { id = Model.StylistId});</button>
+<button>@Html.ActionLink("Back to Stylists", "Index");</button>
