@@ -22,9 +22,9 @@ This application allows the user to track stylists and their clients for a hair 
 * _In terminal Run:  ```git clone https://github.com/BodWood/HairSalon```_
 * _In terminal enter ```code .``` to open files in Visual Studio Code_
 * _In VS Code open a new terminal_
-* _- 1. In VS Code termainl run:  ```dotnet add package Microsoft.EntityFrameworkCore -v 6.0.0```_
-* _- 2. In VS Code terminal run:  ```dotnet add package Pomelo.EntityFrameworkCore.MySql -v 6.0.0```_
-* _- 3. Run:  ```dotnet restore```_
+  1. _In VS Code termainl run:  ```dotnet add package Microsoft.EntityFrameworkCore -v 6.0.0```_
+  2. _In VS Code terminal run:  ```dotnet add package Pomelo.EntityFrameworkCore.MySql -v 6.0.0```_
+  3. _Run:  ```dotnet restore```_
 * _Create a new file called ```appsettings.json``` within the HairSalon directory_
   *  In VS Code terminal: 
       - Run:  ```cd HairSalon```
@@ -40,5 +40,4 @@ This application allows the user to track stylists and their clients for a hair 
 * Make sure to set uid and pwd
 * _Open MySQL and select **Administration** select **Data Import**_
 * _Check **Import from self contained file** option and enter file path of the HairSalon Database, then start import_
-* _Run: ```dotnet run``` i
-n VS Code termainl to start the program_
+* _Run: ```dotnet run``` in VS Code termainl to start the program_
