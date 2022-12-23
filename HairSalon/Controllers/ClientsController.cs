@@ -34,7 +34,7 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Create(Client client) //take in client
     {
-      if(client.Stylist == 0) //make sure client list is not 0
+      if(client.StylistId == 0) //make sure client list is not 0
       {
         return RedirectToAction("Create");
       }
@@ -42,6 +42,14 @@ namespace HairSalon.Controllers
       _db.SaveChanges();  //save changes
       return RedirectToAction("Index"); 
     }
-    
+
+    public ActionResult Details(int id)
+    {
+      Client clientDetails = _db.Clients 
+                                .Include(client => client.Stylist)
+                                .FirstOrDefault(client => client.ClientId == id);
+      return View(clientDetails);
+    }
+
   }
 }
