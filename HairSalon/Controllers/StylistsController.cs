@@ -59,8 +59,17 @@ namespace HairSalon.Controllers
 
     public ActionResult Delete(int id)// takes in id of the entry we want to view
     {
-      Stylists stylistDelete = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
-      return (stylistDelete);//return stylistDelete to Delete View
+      Stylist stylistDelete = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
+      return View(stylistDelete);//return stylistDelete to Delete View
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)//takes in id of the entry we want to view
+    {
+      Stylist deleteStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
+      _db.Stylists.Remove(deleteStylist); //removes selected stylist from table
+      _db.SaveChanges();  //saves changes
+      return RedirectToAction("Index"); //redirects to index
     }
 
   }
