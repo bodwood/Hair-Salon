@@ -28,48 +28,48 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Stylist stylist) //takes in a stylist and adds stylist to DbSet
+    public ActionResult Create(Stylist stylist)
     {
-      _db.Stylists.Add(stylist);  //adds stylist object to database of table Stylists
-      _db.SaveChanges();  //saves database changes
-      return RedirectToAction("Index"); //redirects to index after action is performed
+      _db.Stylists.Add(stylist);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
-    public ActionResult Details(int id) //takes in id of the entry we want to view
+    public ActionResult Details(int id)
     {
-      Stylist stylistDetails = _db.Stylists //start by looking at _db.Stylists
+      Stylist stylistDetails = _db.Stylists
                                     .Include(stylist => stylist.Clients)
-                                    .FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
-      return View(stylistDetails);  //return details of stylist with that id
+                                    .FirstOrDefault(stylist => stylist.StylistId == id);
+      return View(stylistDetails);
     }
 
-    public ActionResult Edit(int id)  //takes in id of the entry we want to view
+    public ActionResult Edit(int id)
     {
-      Stylist stylistEdit = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
-      return View(stylistEdit); //Returns stylistEdit to edit view
+      Stylist stylistEdit = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      return View(stylistEdit);
     }
 
     [HttpPost]
-    public ActionResult Edit(Stylist stylist) //this method is basically the same as Create method
+    public ActionResult Edit(Stylist stylist)
     {
-      _db.Stylists.Update(stylist);  //updates stylist object to database of table Stylists
-      _db.SaveChanges();  //saves database changes
-      return RedirectToAction("Index"); //redirects to index after action is performed
+      _db.Stylists.Update(stylist);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
-    public ActionResult Delete(int id)// takes in id of the entry we want to view
+    public ActionResult Delete(int id)
     {
-      Stylist stylistDelete = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
-      return View(stylistDelete);//return stylistDelete to Delete View
+      Stylist stylistDelete = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      return View(stylistDelete);
     }
 
     [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id)//takes in id of the entry we want to view
+    public ActionResult DeleteConfirmed(int id)
     {
-      Stylist deleteStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);//find any clients where the ClientId of a client is equal to id
-      _db.Stylists.Remove(deleteStylist); //removes selected stylist from table
-      _db.SaveChanges();  //saves changes
-      return RedirectToAction("Index"); //redirects to index
+      Stylist deleteStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      _db.Stylists.Remove(deleteStylist);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
   }
