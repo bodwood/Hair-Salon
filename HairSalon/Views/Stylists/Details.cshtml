@@ -3,6 +3,7 @@
 }
 
 @model HairSalon.Models.Stylist
+@using HairSalon.Models
 
 <h1>Stylist Details</h1>
 
@@ -13,14 +14,14 @@
 }
 else{
   <h2>Clients</h2>
-  @* <ul>
+  <ul>
     @foreach (Client client in Model.Clients)
     {
       <li>@Html.ActionLink($"{client.Description}", "Details", "Clients", new { id = client.ClientId})</li>
     }
-  </ul> *@
+  </ul>
 }
 
-<button>@Html.ActionLink("Edit @Html.DisplayFor(model => model.Name", "Edit", new { id = Model.StylistId});</button>
-<button>@Html.ActionLink("Delete @Html.DisplayFor(model => model.Name", "Delete", new { id = Model.StylistId});</button>
-<button>@Html.ActionLink("Back to Stylists", "Index");</button>
+<button>@Html.ActionLink("Edit Stylist", "Edit", new { id = Model.StylistId})</button>
+<button>@Html.ActionLink("Delete Stylist", "Delete", new { id = Model.StylistId})</button>
+<button>@Html.ActionLink("Back to Stylists", "Index")</button>
