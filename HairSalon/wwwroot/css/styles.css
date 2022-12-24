@@ -20,9 +20,33 @@ h1{
   font-weight: 800;
 }
 
+ul {
+  list-style: none;
+  margin-bottom: 5%;
+}
+
+li{
+  font-size: 3.625rem;
+}
+
+#clientIndexBtns{
+  margin-top: 8%;
+}
+
 #navbar{
   height: 5rem;
 }
 #navbar a{
   font-size: 1.6rem;
+}
+#newStylistNameBtn{
+  text-align: left;
+}
+#newStylistName{
+  text-align: right;
+}
+
+#showAllClientsBtn{
+  margin-top: 5%;
+  margin-bottom: 8%;
 }
