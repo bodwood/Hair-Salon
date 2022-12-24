@@ -2,4 +2,17 @@
   Layout = "_Layout";
 }
 
-<p>@Html.ActionLink("Clients", "Index", "Clients")</p> <p>@Html.ActionLink("Stylists", "Index", "Stylists")</p>
+<div class="row">
+      <div class="col-12">
+        <h1 id="welcomeTitle">Welcome to Eau Claire's Salon!</h1>
+      </div>
+</div>
+
+<div class="row">
+  <div class="col">
+<button class="btn btn-success btn-lg">@Html.ActionLink("Clients", "Index", "Clients")</button> 
+  </div>
+  <div class="col">
+<button class="btn btn-info btn-lg">@Html.ActionLink("Stylists", "Index", "Stylists")</button> 
+  </div>
+</div>
